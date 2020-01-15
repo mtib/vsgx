@@ -1,0 +1,155 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Enclave Definition Language",
+	"patterns": [
+		{
+			"include": "#expressions"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.other",
+					"match": "\\b(public|private)\\b"
+				},
+				{
+					"name": "entity.name.type",
+					"match": "\\b(int|size_t|char|long|const|void)\\b"
+				},
+				{
+					"name": "entity.name.type",
+					"match": "\\*"
+				}
+			]
+		},
+		"expressions": {
+			"patterns": [
+				{
+					"name": "entity.name.class",
+					"match": "\\b[a-z]+\\b"
+				},
+				{
+					"include": "#partitions"
+				}
+			]
+		},
+		"operations": {
+			"patterns": [
+				{
+					"name": "keyword.operator",
+					"match": "\\="
+				},
+				{
+					"name": "constant.numeric",
+					"match": "[0-9]+"
+				}
+			]
+		},
+		"partitions": {
+			"begin": "{",
+			"end": "}",
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close" }
+			},
+			"patterns": [
+				{
+					"name": "entity.name.section",
+					"match": "\\b(trusted|untrusted)\\b"
+				},
+				{
+					"include": "#partition"
+				}
+			]
+		},
+		"partition": {
+			"begin": "{",
+			"end": "}",
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close" }
+			},
+			"patterns": [
+				{
+					"include": "#functionName"
+				},
+				{
+					"include": "#functionArgs"
+				},
+				{
+					"include": "#keywords"
+				}
+			]
+		},
+		"functionName": {
+			"patterns": [
+				{
+					"name": "entity.name.function",
+					"match": "[a-zA-Z0-9_-]+ *(?=\\(.*\\))"
+				}
+			]
+		},
+		"functionArgs": {
+			"begin": "\\(",
+			"end": "\\)",
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close" }
+			},
+			"patterns": [
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#destinations"
+				},
+				{
+					"name": "entity.name",
+					"match": "[a-zA-Z0-9]+"
+				}
+			]
+		},
+		"destinations": {
+			"begin": "\\[",
+			"end": "\\]",
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close" }
+			},
+			"patterns": [
+				{
+					"include": "#directions"
+				},
+				{
+					"include": "#operations"
+				},
+				{
+					"name": "keyword.operator",
+					"match": "(?!_)string|size *(?=\\=)"
+				},
+				{
+					"name": "entity.name",
+					"match": "[a-zA-Z0-9]+"
+				}
+			]
+		},
+		"directions": {
+			"patterns": [
+				{
+					"name": "keyword.operator",
+					"match": "\\bin|out|user_check\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.edl"
+}

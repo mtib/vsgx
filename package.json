@@ -1,0 +1,34 @@
+{
+    "name": "vsgx",
+    "displayName": "vsgx",
+    "description": "Add intel-sgx language support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.41.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "edl",
+                "aliases": [
+                    "Enclave Definition Language",
+                    "edl"
+                ],
+                "extensions": [
+                    ".edl"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "edl",
+                "scopeName": "source.edl",
+                "path": "./syntaxes/edl.tmLanguage.json"
+            }
+        ]
+    }
+}

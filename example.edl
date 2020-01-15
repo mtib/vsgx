@@ -1,0 +1,12 @@
+enclave {
+	trusted {
+		public int ecall_copy([in, string] const char *str);
+		public int ecall_nocopy([user_check] const char *str);
+		public size_t ecall_copy_pointer([in, size = 1] const void *p);
+		public size_t ecall_nocopy_pointer([user_check] const void *p);
+		public int ecall_invoke_read([in, string] const char *filename);
+	};
+	untrusted {
+		int ocall_read_from_file([in, string] const char *filename, [out, size=buffer_size] char *buffer, size_t buffer_size);
+	};
+};
