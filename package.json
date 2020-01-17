@@ -2,8 +2,13 @@
     "name": "vsgx",
     "displayName": "VSGX",
     "description": "Add intel-sgx language support",
-    "keywords": ["intel", "sgx", "edl", "enclave"],
-    "version": "0.0.1",
+    "keywords": [
+        "intel",
+        "sgx",
+        "edl",
+        "enclave"
+    ],
+    "version": "0.1.0",
     "engines": {
         "vscode": "^1.41.0"
     },
