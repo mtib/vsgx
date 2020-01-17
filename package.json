@@ -9,6 +9,7 @@
     "categories": [
         "Programming Languages"
     ],
+    "publisher": "mtib",
     "contributes": {
         "languages": [
             {
@@ -30,5 +31,9 @@
                 "path": "./syntaxes/edl.tmLanguage.json"
             }
         ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mtib/vsgx"
     }
 }
