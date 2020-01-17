@@ -1,6 +1,6 @@
 # VSCode Secure Guard Extension
 
-The aim of this package is to add SGX specific functions in VSCode. **This doesn't make VSCode any more secure!**
+The aim of this package is to add SGX specific functions in VSCode. **This doesn't make VSCode any more secure!** Also available on the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=mtib.vsgx).
 
 ![EDL Highlight](res/screenshot.png)
 
