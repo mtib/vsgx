@@ -4,6 +4,9 @@
 	"patterns": [
 		{
 			"include": "#expressions"
+		},
+		{
+			"include": "#commentBlock"
 		}
 	],
 	"repository": {
@@ -31,6 +34,9 @@
 				},
 				{
 					"include": "#partitions"
+				},
+				{
+					"include": "#commentBlock"
 				}
 			]
 		},
@@ -62,6 +68,9 @@
 				},
 				{
 					"include": "#partition"
+				},
+				{
+					"include": "#commentBlock"
 				}
 			]
 		},
@@ -83,6 +92,9 @@
 				},
 				{
 					"include": "#keywords"
+				},
+				{
+					"include": "#commentBlock"
 				}
 			]
 		},
@@ -146,7 +158,30 @@
 			"patterns": [
 				{
 					"name": "keyword.operator",
-					"match": "\\bin|out|user_check\\b"
+					"match": "\\b(in|out|user_check)\\b"
+				}
+			]
+		},
+		"commentBlock": {
+			"begin": "(^[ \\t]+)?(\\/\\*)",
+			"end": "\\*\\/",
+			"beginCaptures": {
+				"0": { "name": "comment.block.open" }
+			},
+			"endCaptures": {
+				"0": { "name": "comment.block.close" }
+			},
+			"patterns": [
+				{
+					"include": "#comments"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment",
+					"match": "[^(\\*\\/)]"
 				}
 			]
 		}
